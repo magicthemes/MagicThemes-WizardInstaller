@@ -1,0 +1,219 @@
+/* @override http://sandbox/demo.magicthemes.com/gsports-full-installer/installation/css/install.css */
+
+@CHARSET "UTF-8";
+
+/* @group RESET CSS */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;
+	color: #677583;
+}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+/*  @end RESET CSS */
+
+body {
+	font: 12px/150% Tahoma, "Lucida Grande", Lucida, Verdana, sans-serif;
+	background: #fff url(img/bg.jpg) no-repeat fixed center top;
+}
+
+h1 {
+	text-align: center;
+	margin: 10px auto 30px auto;
+	background: transparent url(img/magicthemes-logo.png) center center no-repeat;
+	height: 48px;
+}
+
+h1 a:link,
+h1 a:visited {
+	display: block;	
+	text-indent: -5000px;
+	height: 48px;
+	width: 100%;
+}
+
+h2 {
+	margin: 10px auto;
+	text-align: center;
+	font-size: 22px;
+	height: 40px;
+	line-height: 40px;
+}
+
+h3 {
+	color: #939b99;
+	font-size: 14px;
+	margin: 5px auto 10px auto;
+}
+
+p {
+	margin: 5px 0 10px 0;
+}
+
+input[type="text"],
+input[type="password"] {
+	border: 1px solid #a3a3a3;
+	width: 250px;
+	height: 18px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.green {
+	color: #6db443;
+	font-weight: bold;
+}
+
+.red {
+	color: #ca2b1d;
+	font-weight: bold;
+}
+
+
+#stepbar ol {
+	width: 100%;
+	text-align: center;
+	background: #fff;
+	padding: 5px 0;
+}
+
+#stepbar li {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	color: #c2c2c2;
+	background: #ededed;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0 20px 0 30px;
+	position: relative;
+}
+
+#stepbar li span.number {
+	display: block;
+	position: absolute;
+	left: -18px;
+	height: 40px;
+	width: 34px;
+	color: inherit;
+	background: transparent url(img/number-bg.png) center -40px no-repeat;
+	text-align: left;
+	text-indent: 14px;
+	font-size: 12px;
+}
+
+#stepbar li.active {
+	background: #858d8a;
+	color: #fff;
+}
+
+#stepbar li.active span.number{
+	background: transparent url(img/number-bg.png) center top no-repeat;
+	color: #fff;
+}
+
+.categoryitems,
+#main {
+	margin: 0;
+	border: 1px solid #e8e8e8;
+	background: #f4f4f4;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 10px;
+}
+
+.categoryitems {
+	margin: 0 0 30px 0;
+}
+
+#main {
+	width: 800px;
+	background: #fff;
+	margin: 30px auto 0 auto;
+	padding: 0 40px 30px 40px;
+	
+}
+
+table {
+	width: 100%;
+}
+
+table thead {
+	background: #858d8a url(img/line-bg.png) bottom left repeat-x;
+}
+
+table th {
+	color: #fff;
+	text-transform: uppercase;
+	padding: 5px 0 8px 30px;
+	text-align: left;
+}
+
+table tbody {
+
+}
+
+table td {
+	padding: 5px 0 5px 30px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+table tr td:first-child {
+	font-weight: bold;
+	color: #6d6d6d;
+}
+
+table td tt {
+	color: #458b56;
+}
+
+#buttonbar {
+	text-align: right;
+	margin: 30px auto;
+	width: 800px;
+}
+span.next,
+span.prev {
+	display: inline-block;
+	height: 28px;
+	line-height: 28px;
+	background: transparent url(img/button-bg.png) top left no-repeat;
+	margin: 0 0 0 30px;
+}
+
+#nextButton,
+#prevButton {
+	display: block;
+	padding: 0 30px;
+	color: #f2f4eb;
+	text-decoration: none;
+	font-weight: bold;
+	background: transparent url(img/button-bg.png) -28px right no-repeat;
+	margin: 0 -20px 0 0;
+}
+
+#nextButton:hover,
+#prevButton:hover {
+	color: white;
+}
+
+#footer {
+	margin: 50px auto 30px auto;
+	text-align: center;
+}
+
+#footer p {
+	color: #c6c6c6;
+}
+
+#footer a:link,
+#footer a:visited {
+	color: inherit;
+}
+
+#magicthemes {
+	display: block;
+	text-indent: -5000px;
+	width: 119px;
+	height: 29px;
+	margin: 0 auto;
+	background: transparent url(img/copyright.png) top center no-repeat;
+}
