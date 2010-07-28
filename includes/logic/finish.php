@@ -57,6 +57,89 @@ function changeAdminUser()
 	return $res;
 }
 
+function recursive_remove_directory($directory, $empty=FALSE)
+{
+	// if the path has a slash at the end we remove it here
+	if(substr($directory,-1) == '/')
+	{
+		$directory = substr($directory,0,-1);
+	}
+	// if the path is not valid or is not a directory ...
+	if(!file_exists($directory) || !is_dir($directory))
+	{
+		// ... we return false and exit the function
+		return FALSE;
+	// ... if the path is not readable
+	}elseif(!is_readable($directory))
+	{
+		// ... we return false and exit the function
+		return FALSE;
+	// ... else if the path is readable
+	}else{
+		// we open the directory
+		$handle = opendir($directory);
+		// and scan through the items inside
+		while (FALSE !== ($item = readdir($handle)))
+		{
+			// if the filepointer is not the current directory
+			// or the parent directory
+			if($item != '.' && $item != '..')
+			{
+				// we build the new path to delete
+				$path = $directory.'/'.$item;
+				// if the new path is a directory
+				if(is_dir($path))
+				{
+					// we call this function with the new path
+					recursive_remove_directory($path);
+				// if the new path is a file
+				}else{
+					// we remove the file
+					unlink($path);
+				}
+			}
+		}
+		// close the directory
+		closedir($handle);
+		// if the option to empty is not set to true
+		if($empty == FALSE)
+		{
+			// try to delete the now empty directory
+			if(!rmdir($directory))
+			{
+				// return false if not possible
+				return FALSE;
+			}
+		}
+		// return success
+		return TRUE;
+	}
+}
+
+function removeAkeebaBackup()
+{
+	// Get a connection to the main site database
+	$storage =& ABIStorage::getInstance();
+	$databases = $storage->get('databases');
+	$dbkeys = array_keys($databases);
+	$firstkey = array_shift($dbkeys);
+	$d = $databases[$firstkey];
+	$db =& ABIDatabase::getInstance($d['dbtype'], $d['dbhost'], $d['dbuser'], $d['dbpass'],
+		$d['dbname'], $d['prefix']);
+	unset($d); unset($databases);
+
+	$query = 'DROP TABLE `#__ak_stats`';
+	$db->query($query);
+	$query = 'DROP TABLE `#__ak_profiles`';
+	$db->query($query);
+	$query = 'DELETE FROM `#__components` WHERE `option` = '.$db->escape('com_akeeba');
+	$db->query($query);
+	
+	recursive_remove_directory(JPATH_SITE.DS.'components/com_akeeba');
+	recursive_remove_directory(JPATH_SITE.DS.'administrator/components/com_akeeba');
+	recursive_remove_directory(JPATH_SITE.DS.'media/com_akeeba');
+}
+
 function genRandomPassword($length = 8)
 {
 	$salt = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -131,6 +214,7 @@ if(@is_writable(JPATH_SITE.DS.'configuration.php'))
 		$view['confwritten'] = true;
 	}
 }
+
 // If this wasn't possible, try FTP
 if(($configuration->get('ftp_enable') == 1) && !$view['confwritten'])
 {
@@ -164,3 +248,6 @@ if($automation->hasAutomation() && $view['confwritten'])
 	$redirectURL = '../kickstart.php?task=finalize';
 	$output->setAutomation("top.location.href = '$redirectURL';");
 }
+
+// Remove Traces of Akeeba Backup
+removeAkeebaBackup();
