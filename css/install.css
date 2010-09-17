@@ -186,7 +186,7 @@ span.prev {
 	color: #f2f4eb;
 	text-decoration: none;
 	font-weight: bold;
-	background: transparent url(img/button-bg.png) -28px right no-repeat;
+	background: transparent url(img/button-bg.png) right -28px no-repeat;
 	margin: 0 -20px 0 0;
 }
 
