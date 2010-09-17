@@ -132,7 +132,7 @@ function removeAkeebaBackup()
 	$db->query($query);
 	$query = 'DROP TABLE `#__ak_profiles`';
 	$db->query($query);
-	$query = 'DELETE FROM `#__components` WHERE `option` = '.$db->escape('com_akeeba');
+	$query = 'DELETE FROM `#__components` WHERE `option` = "com_akeeba"';
 	$db->query($query);
 	
 	recursive_remove_directory(JPATH_SITE.DS.'components/com_akeeba');
