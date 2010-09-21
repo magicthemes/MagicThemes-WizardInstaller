@@ -544,7 +544,7 @@ function setupnext_click(event)
 	// Super admin passwords must match (exactly) and email must be non-blank
 	var sapass1 = $('#sapass1').val();
 	var sapass2 = $('#sapass2').val();
-	if(sapass1 !== sapass2)
+	if(sapass1 !== sapass2 || sapass1 == '')
 	{
 		allChecks = false;
 		errors[i++] = errorstrings['sapass'];
